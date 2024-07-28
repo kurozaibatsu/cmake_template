@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.5)
-project(myapp LANGUAGES CXX)
+project(
+  myapp
+  VERSION 1.02
+  LANGUAGES CXX)
 
-set(BUILD_SHARED_LIBS off)
+set(BUILD_SHARED_LIBS OFF)
+set(use_timestamp ON)
 
 add_subdirectory("myapp/third_party/mylib")
 add_subdirectory("myapp")
