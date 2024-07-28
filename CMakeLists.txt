@@ -5,7 +5,7 @@ project(
   LANGUAGES CXX)
 
 set(BUILD_SHARED_LIBS OFF)
-set(use_timestamp ON)
+option(use_timestamp "define TIMESTAMP macro with time of build" ON)
 
 add_subdirectory("myapp/third_party/mylib")
 add_subdirectory("myapp")
