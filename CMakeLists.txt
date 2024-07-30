@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.25)
 project(
   myapp
   VERSION 1.02
@@ -17,3 +17,7 @@ set_target_properties(mylib PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(myapp PRIVATE cxx_std_23)
 target_compile_options(myapp PRIVATE -Wall -Wextra -Wpedantic -Werror)
 set_target_properties(myapp PROPERTIES CXX_EXTENSIONS OFF)
+
+enable_testing()
+add_test(NAME runs COMMAND myapp)
+set_property(TEST runs PROPERTY PASS_REGULAR_EXPRESSION "Version")

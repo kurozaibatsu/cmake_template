@@ -6,5 +6,5 @@
 
 int main() {
   std::puts("Version: " VERSION_MAJOR "." VERSION_MINOR "." TIMESTAMP);
-  module_a::do_something();
+  module_a::do_something(0);
 }

@@ -3,7 +3,7 @@
 
 namespace module_a {
 
-extern void do_something(void);
+extern int do_something(int i);
 
 } // namespace module_a
 
