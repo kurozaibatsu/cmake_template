@@ -1,21 +1,8 @@
-cmake_minimum_required(VERSION 3.5)
-project(mylib_test)
+find_package(GTest REQUIRED HINTS $ENV{GTEST_HOME})
 
-add_executable(tests)
-target_sources(tests PRIVATE "${CMAKE_CURRENT_LIST_DIR}/test.cpp")
-target_link_libraries(tests PRIVATE mylib::mylib)
+add_executable(mylib_test)
+target_sources(mylib_test PRIVATE "${CMAKE_CURRENT_LIST_DIR}/test.cpp")
+target_link_libraries(mylib_test PRIVATE GTest::gtest_main mylib::mylib)
 
-set(lib_name mylib)
-add_test(NAME ${lib_name}_runs COMMAND tests)
-
-function(do_something result)
-  set(test_name "${lib_name}_do_something")
-  foreach(arg IN LISTS ARGN)
-    set(test_name "${test_name}_${arg}")
-  endforeach()
-  add_test(NAME ${test_name} COMMAND tests ${ARGN})
-  set_tests_properties(${test_name} PROPERTIES PASS_REGULAR_EXPRESSION
-                                               ${result})
-endfunction()
-
-do_something("2" 1 50)
+include(GoogleTest)
+gtest_discover_tests(mylib_test)
